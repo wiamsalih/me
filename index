@@ -1,0 +1,1153 @@
+// here is where my portfolio will go
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Wiam Salih</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;1,300;1,400&family=Figtree:wght@300;400;500;600&family=Martian+Mono:wght@300;400&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --s0: #fdf6ee;
+      --s1: #fce8d5;
+      --s2: #f9d0b0;
+      --s3: #f4b48a;
+      --s4: #e8937a;
+      --s5: #d4756a;
+      --s6: #b85e6a;
+      --s7: #8e4a6e;
+
+      --bg-top: #fdf6ee;
+      --bg-mid: #fce8d5;
+      --bg-body: #fae0cc;
+
+      --ink: #1a1310;
+      --mid: #7a6055;
+      --faint: #c4a898;
+      --rule: rgba(180,130,110,0.22);
+      --card: rgba(253,246,238,0.52);
+
+      --serif: 'Cormorant Garamond', Georgia, serif;
+      --sans: 'Figtree', system-ui, sans-serif;
+      --mono: 'Martian Mono', monospace;
+
+      --max: 1200px;
+      --pad: clamp(1.25rem, 4vw, 3rem);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--sans);
+      font-weight: 300;
+      color: var(--ink);
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+      background:
+        radial-gradient(ellipse 120% 60% at 80% 10%, rgba(248,190,130,0.55) 0%, transparent 60%),
+        radial-gradient(ellipse 80% 50% at 15% 30%, rgba(232,147,122,0.35) 0%, transparent 55%),
+        radial-gradient(ellipse 100% 70% at 50% 100%, rgba(142,74,110,0.28) 0%, transparent 60%),
+        radial-gradient(ellipse 140% 80% at 100% 80%, rgba(212,117,106,0.3) 0%, transparent 55%),
+        linear-gradient(180deg, #fdf6ee 0%, #fce8d5 30%, #f9d4b5 60%, #f2c4a0 80%, #e8b090 100%);
+      background-attachment: fixed;
+      min-height: 100vh;
+    }
+
+    body::after {
+      content: "";
+      position: fixed; inset: 0;
+      pointer-events: none; z-index: 9998;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+      opacity: 0.5;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      transition: background .4s, border-color .4s, backdrop-filter .4s;
+      border-bottom: 1px solid transparent;
+    }
+    nav.scrolled {
+      background: rgba(253,246,238,0.82);
+      backdrop-filter: blur(16px) saturate(1.4);
+      border-color: var(--rule);
+    }
+    .nav-inner {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 var(--pad);
+      height: 68px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-logo {
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      color: var(--ink);
+    }
+    .nav-right { display: flex; align-items: center; gap: 2.5rem; }
+    .nav-links { list-style: none; display: flex; gap: 2rem; }
+    .nav-links a {
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--mid);
+      transition: color .2s;
+    }
+    .nav-links a:hover { color: var(--ink); }
+    .nav-cta {
+      font-size: 0.68rem;
+      font-weight: 400;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      border: 1px solid rgba(122,96,85,0.4);
+      padding: 0.5rem 1rem;
+      border-radius: 999px;
+      color: var(--mid);
+      transition: border-color .2s, color .2s, background .2s;
+    }
+    .nav-cta:hover {
+      border-color: var(--ink);
+      color: var(--ink);
+      background: rgba(26,19,16,0.04);
+    }
+
+    .hero-top {
+      padding-top: 68px;
+      border-bottom: 1px solid var(--rule);
+      position: relative;
+      isolation: isolate;
+    }
+    .hero-top-inner {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: clamp(4rem, 10vh, 7rem) var(--pad) clamp(2rem, 4vh, 3.5rem);
+      display: block;
+    }
+    .hero-copy {
+      position: relative;
+      z-index: 2;
+      padding-top: 1.5rem;
+      max-width: 900px;
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+    }
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+    }
+    }
+    .hero-eyebrow {
+      font-family: var(--mono);
+      font-size: 0.6rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--mid);
+      margin-bottom: 2rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    .hero-eyebrow::before {
+      content: "";
+      width: 2rem; height: 1px;
+      background: var(--faint);
+    }
+    .hero-image {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 1px
+      font-size: 0.82rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--faint);
+      margin-bottom: 0.9rem;
+    }
+    .hero-image {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 1px solid var(--rule);
+      flex-shrink: 0;
+      background: rgba(253,246,238,0.6);
+      backdrop-filter: blur(6px);
+    }
+
+    .hero-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .hero-text {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .typed-name-wrap {
+      min-height: clamp(6rem, 12vw, 9rem);
+      display: flex;
+      align-items: flex-end;
+    }
+    .typed-name {
+      font-family: var(--serif);
+      font-size: clamp(5rem, 12vw, 10rem);
+      font-weight: 300;
+      font-style: italic;
+      line-height: 0.92;
+      letter-spacing: -0.05em;
+      white-space: nowrap;
+    }
+    .cursor {
+      display: inline-block;
+      width: 2px;
+      height: 0.95em;
+      margin-left: 4px;
+      background: var(--ink);
+      vertical-align: -0.08em;
+      animation: blinkCursor 1s steps(1) infinite;
+    }
+    @keyframes blinkCursor { 50% { opacity: 0; } }
+
+    .hero-subcopy {
+      max-width: 44ch;
+      margin-top: 1.25rem;
+      font-size: 0.95rem;
+      line-height: 1.95;
+      color: var(--mid);
+    }
+
+    .hero-bottom { border-bottom: 1px solid var(--rule); }
+    .hero-cols {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 var(--pad);
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr 0.9fr;
+    }
+    .hero-col {
+      padding: 2.75rem 0;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      justify-content: space-between;
+    }
+    .hero-col + .hero-col {
+      border-left: 1px solid var(--rule);
+      padding-left: 2.5rem;
+    }
+    .hero-col:not(:last-child) { padding-right: 2.5rem; }
+
+    .col-label {
+      font-family: var(--mono);
+      font-size: 0.58rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--faint);
+      margin-bottom: 0.55rem;
+    }
+    .col-value {
+      font-size: 0.92rem;
+      color: var(--mid);
+      line-height: 1.8;
+    }
+    .col-value.big {
+      font-family: var(--serif);
+      font-size: clamp(1.15rem, 1.9vw, 1.5rem);
+      font-weight: 300;
+      font-style: italic;
+      line-height: 1.55;
+      letter-spacing: -0.01em;
+      color: var(--ink);
+    }
+
+    .hero-actions { display: flex; gap: 0.6rem; flex-wrap: wrap; margin-top: 1.8rem; }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.78rem 1.22rem;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      transition: background .2s, color .2s, border-color .2s, transform .18s;
+      cursor: pointer;
+    }
+    .btn:hover { transform: translateY(-1px); }
+    .btn-dark {
+      background: var(--ink);
+      color: var(--s0);
+    }
+    .btn-dark:hover { background: #2f1e18; }
+    .btn-ghost {
+      border-color: rgba(122,96,85,0.35);
+      color: var(--mid);
+      background: rgba(253,246,238,0.35);
+    }
+    .btn-ghost:hover { border-color: var(--ink); color: var(--ink); }
+
+    .s-hdr { border-bottom: 1px solid var(--rule); }
+    .s-hdr-inner {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 1.6rem var(--pad);
+      display: flex;
+      align-items: baseline;
+      gap: 1.5rem;
+    }
+    .s-num {
+      font-family: var(--mono);
+      font-size: 0.56rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--faint);
+      flex-shrink: 0;
+    }
+    .s-title {
+      font-family: var(--serif);
+      font-size: clamp(1.75rem, 4vw, 3rem);
+      font-weight: 300;
+      font-style: italic;
+      letter-spacing: -0.03em;
+      line-height: 1;
+      color: var(--ink);
+    }
+
+    .about-body { border-bottom: 1px solid var(--rule); }
+    .about-body-inner {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 var(--pad);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+    .about-left {
+      padding: 4.5rem 3rem 4.5rem 0;
+      border-right: 1px solid var(--rule);
+    }
+    .about-statement {
+      font-family: var(--serif);
+      font-size: clamp(1.4rem, 2.6vw, 2rem);
+      font-weight: 300;
+      font-style: italic;
+      line-height: 1.5;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+    }
+    .about-right { padding: 4.5rem 0 4.5rem 3rem; }
+    .about-para {
+      font-size: 0.92rem;
+      color: var(--mid);
+      line-height: 2;
+      margin-bottom: 2.5rem;
+    }
+
+    .skill-row { margin-bottom: 1.25rem; }
+    .skill-label {
+      font-family: var(--mono);
+      font-size: 0.56rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--faint);
+      margin-bottom: 0.6rem;
+    }
+    .chips { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+    .chip {
+      font-size: 0.7rem;
+      letter-spacing: 0.03em;
+      color: var(--mid);
+      border: 1px solid var(--rule);
+      border-radius: 999px;
+      padding: 0.35rem 0.8rem;
+      transition: border-color .2s, color .2s;
+      background: rgba(253,246,238,0.4);
+    }
+    .chip:hover { border-color: rgba(122,96,85,0.6); color: var(--ink); }
+    .chip.hi { border-color: rgba(122,96,85,0.5); color: var(--ink); }
+
+    .exp-list { border-bottom: 1px solid var(--rule); }
+    .exp-item {
+      border-bottom: 1px solid var(--rule);
+      transition: background .25s;
+    }
+    .exp-item:last-child { border-bottom: none; }
+    .exp-item:hover { background: rgba(253,246,238,0.5); }
+    .exp-item-inner {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 3rem var(--pad);
+      display: grid;
+      grid-template-columns: 230px 1fr;
+      gap: 3.5rem;
+    }
+    .exp-company {
+      font-family: var(--serif);
+      font-size: 1.15rem;
+      font-weight: 300;
+      font-style: italic;
+      margin-bottom: 0.45rem;
+      color: var(--ink);
+    }
+    .exp-meta {
+      font-family: var(--mono);
+      font-size: 0.58rem;
+      letter-spacing: 0.06em;
+      color: var(--faint);
+      line-height: 2;
+    }
+    .exp-badge {
+      display: inline-block;
+      margin-top: 0.75rem;
+      font-family: var(--mono);
+      font-size: 0.52rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--faint);
+      border: 1px solid var(--rule);
+      border-radius: 999px;
+      padding: 0.25rem 0.65rem;
+    }
+    .exp-role {
+      font-size: 0.98rem;
+      font-weight: 500;
+      color: var(--ink);
+      margin-bottom: 1.5rem;
+      letter-spacing: 0.01em;
+    }
+    .exp-bullets {
+      list-style: none;
+      counter-reset: abc;
+    }
+    .exp-bullets li {
+      display: grid;
+      grid-template-columns: 1.4rem 1fr;
+      gap: 0.75rem;
+      padding: 0.75rem 0;
+      border-top: 1px solid var(--rule);
+      font-size: 0.86rem;
+      color: var(--mid);
+      line-height: 1.8;
+      counter-increment: abc;
+    }
+    .exp-bullets li::before {
+      content: counter(abc, upper-alpha);
+      font-family: var(--mono);
+      font-size: 0.56rem;
+      color: var(--faint);
+      padding-top: 0.35rem;
+      letter-spacing: 0.05em;
+    }
+
+    .project-list {
+      border-bottom: 1px solid var(--rule);
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 1rem var(--pad) 2.2rem;
+      display: grid;
+      gap: 1rem;
+    }
+    .project-row {
+      display: block;
+      border: 1px solid var(--rule);
+      border-radius: 28px;
+      background: var(--card);
+      backdrop-filter: blur(10px);
+      transition: transform .25s, border-color .25s, background .25s, box-shadow .25s;
+      overflow: hidden;
+    }
+    .project-row:hover {
+      transform: translateY(-4px);
+      border-color: rgba(122,96,85,0.45);
+      background: rgba(253,246,238,0.72);
+      box-shadow: 0 18px 45px rgba(67,35,25,0.08);
+    }
+    .project-row:hover .pr-arrow {
+      transform: translate(4px,-4px);
+      color: var(--ink);
+    }
+    .project-row-inner {
+      padding: 1.8rem 1.9rem 2rem;
+      display: grid;
+      grid-template-columns: 78px 1fr auto;
+      align-items: start;
+      gap: 1.4rem;
+    }
+    .pr-num {
+      font-family: var(--mono);
+      font-size: 0.58rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--faint);
+      padding-top: 0.45rem;
+    }
+    .pr-topline {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.65rem;
+      margin-bottom: 0.55rem;
+    }
+    .pr-title {
+      font-family: var(--serif);
+      font-size: clamp(1.5rem, 2.9vw, 2.1rem);
+      font-weight: 300;
+      font-style: italic;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+    }
+    .pr-badge {
+      font-family: var(--mono);
+      font-size: 0.52rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--mid);
+      border: 1px solid var(--rule);
+      border-radius: 999px;
+      padding: 0.3rem 0.65rem;
+      background: rgba(255,255,255,0.24);
+    }
+    .pr-desc {
+      font-size: 1rem;
+      color: var(--mid);
+      line-height: 1.9;
+      max-width: 68ch;
+      margin-bottom: 1rem;
+    }
+    .pr-detail-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0.9rem;
+      margin-bottom: 1rem;
+    }
+    .pr-detail {
+      border: 1px solid rgba(180,130,110,0.16);
+      border-radius: 18px;
+      padding: 0.95rem 1rem;
+      background: rgba(253,246,238,0.5);
+    }
+    .pr-detail-label {
+      font-family: var(--mono);
+      font-size: 0.5rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--faint);
+      margin-bottom: 0.45rem;
+    }
+    .pr-detail-value {
+      font-size: 0.88rem;
+      line-height: 1.7;
+      color: var(--ink);
+    }
+    .pr-highlights {
+      list-style: none;
+      display: grid;
+      gap: 0.55rem;
+      margin-bottom: 1rem;
+    }
+    .pr-highlights li {
+      display: grid;
+      grid-template-columns: 1rem 1fr;
+      gap: 0.65rem;
+      font-size: 0.92rem;
+      color: var(--mid);
+      line-height: 1.75;
+    }
+    .pr-highlights li::before {
+      content: "•";
+      color: var(--ink);
+    }
+    .pr-tags { display: flex; gap: 0.45rem; flex-wrap: wrap; }
+    .pr-tag {
+      font-family: var(--mono);
+      font-size: 0.54rem;
+      letter-spacing: 0.08em;
+      color: var(--faint);
+      border: 1px solid var(--rule);
+      border-radius: 999px;
+      padding: 0.22rem 0.58rem;
+      background: rgba(255,255,255,0.18);
+    }
+    .pr-arrow {
+      font-size: 1.2rem;
+      color: var(--faint);
+      flex-shrink: 0;
+      transition: transform .25s, color .2s;
+      padding-top: 0.45rem;
+    }
+
+    .contact-body { border-bottom: 1px solid var(--rule); }
+    .contact-body-inner {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 var(--pad);
+      display: grid;
+      grid-template-columns: 1fr 0.5fr;
+    }
+    .contact-left {
+      padding: 4.5rem 3rem 4.5rem 0;
+      border-right: 1px solid var(--rule);
+    }
+    .contact-h {
+      font-family: var(--serif);
+      font-size: clamp(2rem, 5vw, 4rem);
+      font-weight: 300;
+      font-style: italic;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      color: var(--ink);
+      margin-bottom: 1.25rem;
+    }
+    .contact-sub {
+      font-size: 0.88rem;
+      color: var(--mid);
+      line-height: 1.95;
+      margin-bottom: 2.5rem;
+      max-width: 42ch;
+    }
+    .clinks { display: grid; }
+    .clink {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 0;
+      border-top: 1px solid var(--rule);
+      transition: opacity .2s;
+    }
+    .clink:last-child { border-bottom: 1px solid var(--rule); }
+    .clink:hover { opacity: 0.55; }
+    .cl-label {
+      font-family: var(--mono);
+      font-size: 0.52rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--faint);
+      display: block;
+      margin-bottom: 0.12rem;
+    }
+    .cl-value { font-size: 0.86rem; color: var(--ink); }
+    .cl-arrow { font-size: 0.8rem; color: var(--faint); }
+
+    .contact-right { padding: 4.5rem 0 4.5rem 3rem; }
+    .st-label,
+    .roles-label {
+      font-family: var(--mono);
+      font-size: 0.54rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--faint);
+      margin-bottom: 0.85rem;
+    }
+    .st-row {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 0.85rem;
+      color: var(--ink);
+      margin-bottom: 2.5rem;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid var(--rule);
+    }
+    .sdot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: #c97a50;
+      box-shadow: 0 0 8px rgba(201,122,80,0.5);
+      animation: blink 2.5s ease-in-out infinite;
+    }
+    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.3} }
+    .role-item {
+      font-size: 0.82rem;
+      color: var(--mid);
+      padding: 0.65rem 0;
+      border-bottom: 1px solid var(--rule);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: color .2s;
+    }
+    .role-item:first-of-type { border-top: 1px solid var(--rule); }
+    .role-item:hover { color: var(--ink); }
+    .role-arr { font-size: 0.7rem; color: var(--faint); }
+
+    footer { border-top: 1px solid var(--rule); }
+    .footer-inner {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 1.5rem var(--pad);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .footer-copy,
+    .footer-links a {
+      font-family: var(--mono);
+      font-size: 0.56rem;
+      letter-spacing: 0.1em;
+      color: var(--faint);
+    }
+    .footer-links { display: flex; gap: 1.5rem; }
+    .footer-links a { text-transform: uppercase; transition: color .2s; }
+    .footer-links a:hover { color: var(--ink); }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(12px);
+      transition: opacity .7s ease, transform .7s ease;
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    @media (max-width: 1080px) {
+      .hero-top-inner {
+        min-height: auto;
+      }
+      .pr-detail-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 960px) {
+      .hero-cols { grid-template-columns: 1fr 1fr; }
+      .hero-col:last-child { display: none; }
+      .about-body-inner,
+      .contact-body-inner { grid-template-columns: 1fr; }
+      .about-left,
+      .contact-left {
+        border-right: none;
+        border-bottom: 1px solid var(--rule);
+        padding-right: 0; padding-bottom: 3rem;
+      }
+      .about-right,
+      .contact-right { padding-left: 0; }
+      .exp-item-inner { grid-template-columns: 1fr; gap: 1.25rem; }
+      .project-row-inner { grid-template-columns: 1fr; }
+      .pr-arrow { display: none; }
+    }
+    @media (max-width: 640px) {
+      .nav-links { display: none; }
+      .hero-top-inner { padding-top: 3rem; }
+      .hero-cols { grid-template-columns: 1fr; }
+      .hero-col + .hero-col { border-left: none; border-top: 1px solid var(--rule); padding-left: 0; }
+      .typed-name { font-size: clamp(4rem, 18vw, 6rem); white-space: normal; }
+      .project-list { padding-inline: 1rem; }
+      .project-row-inner { padding: 1.4rem; }
+      .pr-num { display: none; }
+      .pr-title { font-size: 1.55rem; }
+      .pr-desc,
+      .pr-highlights li,
+      .pr-detail-value { font-size: 0.92rem; }
+    }
+  </style>
+</head>
+<body>
+  <nav id="nav">
+    <div class="nav-inner">
+      <span class="nav-logo">Wiam Salih</span>
+      <div class="nav-right">
+        <ul class="nav-links">
+          <li><a href="#about">About</a></li>
+          <li><a href="#experience">Experience</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+        <a class="nav-cta" href="mailto:wsalih2@gmu.edu">Get in touch</a>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <div class="hero-top reveal visible">
+      <div class="hero-top-inner">
+        <div class="hero-copy">
+          <div class="hero-image">
+           
+            <img src="your-image.jpg" alt="Wiam Salih" />
+          </div>
+
+          <div class="hero-text">
+            <div class="hero-eyebrow">Data &amp; Analytics Engineer • AWS Certified</div>
+            <div class="hero-intro">Hello, I’m</div>
+            <div class="typed-name-wrap">
+              <h1 class="typed-name" id="typedName" aria-label="Wiam Salih"></h1>
+            </div>
+            <p class="hero-subcopy">I build clean pipelines, reliable systems, and decision-ready dashboards.</p>
+            <div class="hero-actions">
+            <a class="btn btn-dark" href="#projects">View Projects</a>
+            <a class="btn btn-ghost" href="https://www.linkedin.com/in/wiam-salih-454069241/" target="_blank" rel="noopener">LinkedIn ↗</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-bottom">
+      <div class="hero-cols reveal visible">
+        <div class="hero-col">
+          <div>
+            <div class="col-label">About</div>
+            <div class="col-value big">I’m currently a senior at George Mason University studying Information Technology with a concentration in Software Solutions. I’m a problem solver at heart, and analytical with my techniques which is why I’m fascinated by building thoughtful data products, reliable cloud workflows, and analytics experiences that make complex systems feel clear and useful. </div>
+          </div>
+        </div>
+        <div class="hero-col">
+          <div>
+            <div class="col-label">Education</div>
+            <div class="col-value">George Mason University<br />B.S. Information Technology</div>
+          </div>
+          <div>
+            <div class="col-label">Focus</div>
+            <div class="col-value">Data Engineering<br />Analytics Engineering</div>
+          </div>
+        </div>
+        <div class="hero-col">
+          <div>
+            <div class="col-label">Location</div>
+            <div class="col-value">Alexandria, VA<br />Open to relocation</div>
+          </div>
+          <div>
+            <div class="col-label">Status</div>
+            <div class="col-value">Open to full-time</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="about">
+      <div class="s-hdr">
+        <div class="s-hdr-inner reveal">
+          <span class="s-num">01 / About</span>
+          <h2 class="s-title">Clear systems. Useful outcomes.</h2>
+        </div>
+      </div>
+      <div class="about-body">
+        <div class="about-body-inner">
+          <div class="about-left reveal">
+            <p class="about-statement">I build the systems that turn raw data into decisions, with equal attention to architecture, clarity, and the people using the output.</p>
+          </div>
+          <div class="about-right reveal">
+            <p class="about-para">My work sits between data engineering, analytics, and software. I build end-to-end workflows that are technically sound, visually clear, and genuinely useful to the people depending on them.</p>
+            <div class="skill-row">
+              <div class="skill-label">Languages</div>
+              <div class="chips">
+                <span class="chip hi">Python</span>
+                <span class="chip hi">SQL</span>
+                <span class="chip">Java</span>
+                <span class="chip">JavaScript</span>
+              </div>
+            </div>
+            <div class="skill-row">
+              <div class="skill-label">Cloud &amp; Data</div>
+              <div class="chips">
+                <span class="chip hi">AWS</span>
+                <span class="chip">Glue</span>
+                <span class="chip">Lambda</span>
+                <span class="chip">S3</span>
+                <span class="chip">RDS</span>
+                <span class="chip">Redshift</span>
+                <span class="chip">ETL</span>
+                <span class="chip">Star Schema</span>
+              </div>
+            </div>
+            <div class="skill-row">
+              <div class="skill-label">Visualization</div>
+              <div class="chips">
+                <span class="chip">QuickSight</span>
+                <span class="chip">Tableau</span>
+                <span class="chip">Power BI</span>
+                <span class="chip">Oracle Analytics</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="experience">
+      <div class="s-hdr">
+        <div class="s-hdr-inner reveal">
+          <span class="s-num">02 / Experience</span>
+          <h2 class="s-title">Selected experience.</h2>
+        </div>
+      </div>
+      <div class="exp-list">
+        <div class="exp-item reveal">
+          <div class="exp-item-inner">
+            <div>
+              <div class="exp-company">Amazon Web Services</div>
+              <div class="exp-meta">May 2025 – Aug 2025<br />Seattle, WA</div>
+              <div class="exp-badge">Internship</div>
+            </div>
+            <div>
+              <div class="exp-role">Cloud Support Engineer Intern</div>
+              <ul class="exp-bullets">
+                <li>Architected end-to-end ETL pipelines across EC2, RDS, Glue, Lambda, and S3 for production data workflows.</li>
+                <li>Built anomaly detection workflows in Python and SQL, cutting weekly triage time by 10+ hours.</li>
+                <li>Reduced escalation tickets by 15% through process optimization.</li>
+                <li>Authored 10+ runbooks, improving onboarding speed by 30%.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="exp-item reveal">
+          <div class="exp-item-inner">
+            <div>
+              <div class="exp-company">George Mason University</div>
+              <div class="exp-meta">Aug 2024 – Present<br />Fairfax, VA</div>
+              <div class="exp-badge">Part-Time</div>
+            </div>
+            <div>
+              <div class="exp-role">Technical Assistant — Cybersecurity Engineering</div>
+              <ul class="exp-bullets">
+                <li>Re-engineered SQL reporting systems with stronger query performance and tighter access controls.</li>
+                <li>Supported technical operations with emphasis on reliability and security-minded implementation.</li>
+                <li>Improved reporting accuracy and usability for engineering and stakeholder teams.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="projects">
+      <div class="s-hdr">
+        <div class="s-hdr-inner reveal">
+          <span class="s-num">03 / Projects</span>
+          <h2 class="s-title">Selected work.</h2>
+        </div>
+      </div>
+
+      <div class="project-list">
+        <a class="project-row reveal" href="https://wiamsalih-finance-chatbot.hf.space/" target="_blank" rel="noopener">
+          <div class="project-row-inner">
+            <span class="pr-num">P.01</span>
+            <div>
+              <div class="pr-topline">
+                <div class="pr-title">AI Financial Advisory Chatbot</div>
+                <span class="pr-badge">Live demo</span>
+              </div>
+              <div class="pr-desc">An interactive financial assistant built to answer user questions with NLP-driven responses, supported by Python and SQL workflows for cleaner data preparation and easier deployment.</div>
+              <div class="pr-detail-grid">
+                <div class="pr-detail">
+                  <div class="pr-detail-label">What it does</div>
+                  <div class="pr-detail-value">Translates financial questions into fast, accessible answers through a conversational interface.</div>
+                </div>
+                <div class="pr-detail">
+                  <div class="pr-detail-label">My contribution</div>
+                  <div class="pr-detail-value">Built the ETL logic, model workflow, data handling, and deployment pipeline.</div>
+                </div>
+                <div class="pr-detail">
+                  <div class="pr-detail-label">Impact</div>
+                  <div class="pr-detail-value">Reduced repetitive manual processing by more than 5 hours per month.</div>
+                </div>
+              </div>
+              <ul class="pr-highlights">
+                <li>Created a full pipeline from data prep to live interface with a focus on usability and maintainability.</li>
+                <li>Combined Python, SQL, and NLP tooling to support cleaner answers and smoother user interaction.</li>
+              </ul>
+              <div class="pr-tags"><span class="pr-tag">Python</span><span class="pr-tag">NLP</span><span class="pr-tag">SQL</span><span class="pr-tag">Hugging Face</span></div>
+            </div>
+            <span class="pr-arrow">↗</span>
+          </div>
+        </a>
+
+        <a class="project-row reveal" href="https://wiamsalih.github.io/case-study/" target="_blank" rel="noopener">
+          <div class="project-row-inner">
+            <span class="pr-num">P.02</span>
+            <div>
+              <div class="pr-topline">
+                <div class="pr-title">Oracle Analytics Retail Intelligence</div>
+                <span class="pr-badge">Case study</span>
+              </div>
+              <div class="pr-desc">A retail analytics project focused on turning raw operational data into predictive insight, clearer reporting, and decision support through end-to-end ingestion, cleaning, modeling, and dashboard design.</div>
+              <div class="pr-detail-grid">
+                <div class="pr-detail">
+                  <div class="pr-detail-label">What it does</div>
+                  <div class="pr-detail-value">Highlights customer and retail trends through reporting and predictive analysis.</div>
+                </div>
+                <div class="pr-detail">
+                  <div class="pr-detail-label">My contribution</div>
+                  <div class="pr-detail-value">Handled pipeline design, transformation logic, and analytics presentation.</div>
+                </div>
+                <div class="pr-detail">
+                  <div class="pr-detail-label">Focus</div>
+                  <div class="pr-detail-value">Used business questions to shape the metrics, model outputs, and dashboard structure.</div>
+                </div>
+              </div>
+              <ul class="pr-highlights">
+                <li>Built the project as a complete analytics flow rather than just a final dashboard.</li>
+                <li>Used Oracle Analytics and ML concepts to connect raw data with clearer business-facing output.</li>
+              </ul>
+              <div class="pr-tags"><span class="pr-tag">Oracle Analytics</span><span class="pr-tag">ML</span><span class="pr-tag">ETL</span></div>
+            </div>
+            <span class="pr-arrow">↗</span>
+          </div>
+        </a>
+
+        <a class="project-row reveal" href="https://drive.google.com/uc?export=download&id=1K82K-Tf0lvsUIT9jIIX1hgTYWp4SwtBL" target="_blank" rel="noopener">
+          <div class="project-row-inner">
+            <span class="pr-num">P.03</span>
+            <div>
+              <div class="pr-topline">
+                <div class="pr-title">Portfolio Management Dashboard</div>
+                <span class="pr-badge">Dashboard</span>
+              </div>
+              <div class="pr-desc">A finance dashboard designed to make investment performance easier to understand through portfolio breakdowns, asset allocation visibility, and clear performance tracking.</div>
+              <div class="pr-detail-grid">
+                <div class="pr-detail">
+                  <div class="pr-detail-label">What it shows</div>
+                  <div class="pr-detail-value">Asset allocation, performance attribution, and risk-oriented visibility in one place.</div>
+                </div>
+                <div class="pr-detail">
+                  <div class="pr-detail-label">My contribution</div>
+                  <div class="pr-detail-value">Designed the dashboard logic and structured the visuals around practical investment questions.</div>
+                </div>
+                <div class="pr-detail">
+                  <div class="pr-detail-label">Why it matters</div>
+                  <div class="pr-detail-value">Makes complex portfolio information easier to scan, compare, and explain.</div>
+                </div>
+              </div>
+              <ul class="pr-highlights">
+                <li>Focused on readability so the dashboard communicates quickly without overwhelming the viewer.</li>
+                <li>Balanced analytics detail with presentation quality for a cleaner final experience.</li>
+              </ul>
+              <div class="pr-tags"><span class="pr-tag">Tableau</span><span class="pr-tag">Finance</span><span class="pr-tag">Analytics</span></div>
+            </div>
+            <span class="pr-arrow">↗</span>
+          </div>
+        </a>
+
+        <a class="project-row reveal" href="https://github.com/wiamsalih/wiamsalih-github.io/blob/main/S4_A1_SALIH_WIAM.sql" target="_blank" rel="noopener">
+          <div class="project-row-inner">
+            <span class="pr-num">P.04</span>
+            <div>
+              <div class="pr-topline">
+                <div class="pr-title">Soccer League Relational Database</div>
+                <span class="pr-badge">SQL project</span>
+              </div>
+              <div class="pr-desc">A normalized database design for teams, games, coaches, and players, built to support structured queries, clean relationships, and stronger data integrity across the full schema.</div>
+              <div class="pr-detail-grid">
+                <div class="pr-detail">
+                  <div class="pr-detail-label">What it does</div>
+                  <div class="pr-detail-value">Models league operations through relational structure and queryable entities.</div>
+                </div>
+                <div class="pr-detail">
+                  <div class="pr-detail-label">My contribution</div>
+                  <div class="pr-detail-value">Designed the schema, normalized the relationships, and implemented the SQL logic.</div>
+                </div>
+                <div class="pr-detail">
+                  <div class="pr-detail-label">Technical focus</div>
+                  <div class="pr-detail-value">Centered on ER modeling, integrity constraints, and more advanced querying.</div>
+                </div>
+              </div>
+              <ul class="pr-highlights">
+                <li>Built with strong relational thinking instead of flat-table shortcuts.</li>
+                <li>Shows database design skills alongside practical SQL implementation.</li>
+              </ul>
+              <div class="pr-tags"><span class="pr-tag">SQL</span><span class="pr-tag">Database Design</span><span class="pr-tag">ER Modeling</span></div>
+            </div>
+            <span class="pr-arrow">↗</span>
+          </div>
+        </a>
+
+        <a class="project-row reveal" href="https://github.com/wiamsalih/wiamsalih-github.io/blob/main/P5.java" target="_blank" rel="noopener">
+          <div class="project-row-inner">
+            <span class="pr-num">P.05</span>
+            <div>
+              <div class="pr-topline">
+                <div class="pr-title">Palette Perfection</div>
+                <span class="pr-badge">Java app</span>
+              </div>
+              <div class="pr-desc">A Java application that automates paint pricing, labor cost calculation, and customer-facing business rules using object-oriented structure and clear program logic.</div>
+              <div class="pr-detail-grid">
+                <div class="pr-detail">
+                  <div class="pr-detail-label">What it does</div>
+                  <div class="pr-detail-value">Calculates project cost details based on paint quantities, labor, and customer inputs.</div>
+                </div>
+                <div class="pr-detail">
+                  <div class="pr-detail-label">My contribution</div>
+                  <div class="pr-detail-value">Built the application logic and organized the code with an OOP-driven approach.</div>
+                </div>
+                <div class="pr-detail">
+                  <div class="pr-detail-label">Why it stands out</div>
+                  <div class="pr-detail-value">Shows business logic thinking, code organization, and practical automation in Java.</div>
+                </div>
+              </div>
+              <ul class="pr-highlights">
+                <li>Structured the project around maintainable classes and reusable logic.</li>
+                <li>Designed for accuracy, readability, and clearer real-world calculations.</li>
+              </ul>
+              <div class="pr-tags"><span class="pr-tag">Java</span><span class="pr-tag">OOP</span><span class="pr-tag">Business Logic</span></div>
+            </div>
+            <span class="pr-arrow">↗</span>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <div id="contact">
+      <div class="s-hdr">
+        <div class="s-hdr-inner reveal">
+          <span class="s-num">04 / Contact</span>
+          <h2 class="s-title">Get in touch.</h2>
+        </div>
+      </div>
+      <div class="contact-body">
+        <div class="contact-body-inner">
+          <div class="contact-left reveal">
+            <h3 class="contact-h">Open to the<br />right role.</h3>
+            <p class="contact-sub">Seeking data engineering, analytics engineering, cloud data, and BI roles where strong systems thinking matters.</p>
+            <div class="clinks">
+              <a class="clink" href="mailto:wsalih2@gmu.edu">
+                <div><span class="cl-label">Email</span><span class="cl-value">wsalih2@gmu.edu</span></div>
+                <span class="cl-arrow">↗</span>
+              </a>
+              <a class="clink" href="https://www.linkedin.com/in/wiam-salih-454069241/" target="_blank" rel="noopener">
+                <div><span class="cl-label">LinkedIn</span><span class="cl-value">linkedin.com/in/wiam-salih-454069241</span></div>
+                <span class="cl-arrow">↗</span>
+              </a>
+              <a class="clink" href="https://github.com/wiamsalih" target="_blank" rel="noopener">
+                <div><span class="cl-label">GitHub</span><span class="cl-value">github.com/wiamsalih</span></div>
+                <span class="cl-arrow">↗</span>
+              </a>
+            </div>
+          </div>
+
+          <div class="contact-right reveal">
+            <div class="st-label">Current status</div>
+            <div class="st-row"><span class="sdot"></span><span>Available for full-time opportunities</span></div>
+            <div class="roles-label">Interested in</div>
+            <div class="role-item"><span>Data Engineering</span><span class="role-arr">↗</span></div>
+            <div class="role-item"><span>Analytics Engineering</span><span class="role-arr">↗</span></div>
+            <div class="role-item"><span>Cloud Data Roles</span><span class="role-arr">↗</span></div>
+            <div class="role-item"><span>Business Intelligence</span><span class="role-arr">↗</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-copy">© 2026 Wiam Salih</div>
+      <div class="footer-links">
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.
