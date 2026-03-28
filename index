@@ -801,17 +801,17 @@
         <div class="hero-col">
           <div>
             <div class="col-label">Education</div>
-            <div class="col-value">George Mason University<br />B.S. Information Technology</div>
+            <div class="col-value">George Mason University<br />B.S. Information Technology, Software Solutions</div>
           </div>
           <div>
             <div class="col-label">Focus</div>
-            <div class="col-value">Data Engineering<br />Analytics Engineering</div>
+            <div class="col-value">Data Engineering<br />Analytics & Cloud</div>
           </div>
         </div>
         <div class="hero-col">
           <div>
             <div class="col-label">Location</div>
-            <div class="col-value">Alexandria, VA<br />Open to relocation</div>
+            <div class="col-value">Arlington, VA<br />Open to relocation</div>
           </div>
           <div>
             <div class="col-label">Status</div>
@@ -834,7 +834,7 @@
             <p class="about-statement">I build the systems that turn raw data into decisions, with equal attention to architecture, clarity, and the people using the output.</p>
           </div>
           <div class="about-right reveal">
-            <p class="about-para">My work sits between data engineering, analytics, and software. I build end-to-end workflows that are technically sound, visually clear, and genuinely useful to the people depending on them.</p>
+            <p class="about-para">My work sits between data engineering, analytics, and cloud. I build end-to-end workflows that are technically sound, visually clear, and are genuinely useful to the people depending on them.</p>
             <div class="skill-row">
               <div class="skill-label">Languages</div>
               <div class="chips">
