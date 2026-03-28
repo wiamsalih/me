@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,10 +18,6 @@
       --s5: #d4756a;
       --s6: #b85e6a;
       --s7: #8e4a6e;
-
-      --bg-top: #fdf6ee;
-      --bg-mid: #fce8d5;
-      --bg-body: #fae0cc;
 
       --ink: #1a1310;
       --mid: #7a6055;
@@ -59,8 +54,10 @@
 
     body::after {
       content: "";
-      position: fixed; inset: 0;
-      pointer-events: none; z-index: 9998;
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 9998;
       background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
       opacity: 0.5;
     }
@@ -68,7 +65,11 @@
     a { color: inherit; text-decoration: none; }
 
     nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
       transition: background .4s, border-color .4s, backdrop-filter .4s;
       border-bottom: 1px solid transparent;
     }
@@ -92,8 +93,16 @@
       letter-spacing: 0.04em;
       color: var(--ink);
     }
-    .nav-right { display: flex; align-items: center; gap: 2.5rem; }
-    .nav-links { list-style: none; display: flex; gap: 2rem; }
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 2.5rem;
+    }
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
+    }
     .nav-links a {
       font-size: 0.72rem;
       letter-spacing: 0.12em;
@@ -129,91 +138,52 @@
       max-width: var(--max);
       margin: 0 auto;
       padding: clamp(4rem, 10vh, 7rem) var(--pad) clamp(2rem, 4vh, 3.5rem);
-      display: block;
     }
     .hero-copy {
-      position: relative;
-      z-index: 2;
-      padding-top: 1.5rem;
-      max-width: 900px;
-      display: flex;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 260px;
+      gap: clamp(2rem, 5vw, 5rem);
       align-items: center;
-      gap: 2rem;
     }
-      display: flex;
-      align-items: center;
-      gap: 2rem;
-    }
+    .hero-text {
+      max-width: 760px;
+      min-width: 0;
     }
     .hero-eyebrow {
-      font-family: var(--mono);
-      font-size: 0.6rem;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: var(--mid);
-      margin-bottom: 2rem;
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-    }
-    .hero-eyebrow::before {
-      content: "";
-      width: 2rem; height: 1px;
-      background: var(--faint);
-    }
-    .hero-image {
-      width: 120px;
-      height: 120px;
-      border-radius: 50%;
-      overflow: hidden;
-      border: 1px
+      font-family: var(--sans);
       font-size: 0.82rem;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--faint);
-      margin-bottom: 0.9rem;
+      font-weight: 400;
+      letter-spacing: 0;
+      color: var(--ink);
+      margin-bottom: 0.2rem;
     }
-    .hero-image {
-      width: 120px;
-      height: 120px;
-      border-radius: 50%;
-      overflow: hidden;
-      border: 1px solid var(--rule);
-      flex-shrink: 0;
-      background: rgba(253,246,238,0.6);
-      backdrop-filter: blur(6px);
+    .hero-intro {
+      font-size: 0.82rem;
+      font-weight: 400;
+      color: var(--ink);
+      margin-bottom: 0.2rem;
     }
-
-    .hero-image img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .hero-text {
-      display: flex;
-      flex-direction: column;
-    }
-
     .typed-name-wrap {
-      min-height: clamp(6rem, 12vw, 9rem);
+      min-height: clamp(5rem, 9vw, 7.25rem);
       display: flex;
       align-items: flex-end;
+      margin-bottom: 1rem;
     }
     .typed-name {
       font-family: var(--serif);
-      font-size: clamp(5rem, 12vw, 10rem);
+      font-size: clamp(3.2rem, 6.7vw, 5.2rem);
       font-weight: 300;
       font-style: italic;
-      line-height: 0.92;
-      letter-spacing: -0.05em;
+      line-height: 0.98;
+      letter-spacing: -0.03em;
       white-space: nowrap;
+      color: var(--ink);
     }
     .cursor {
       display: inline-block;
       width: 2px;
-      height: 0.95em;
-      margin-left: 4px;
+      height: 0.9em;
+      margin-left: 6px;
       background: var(--ink);
       vertical-align: -0.08em;
       animation: blinkCursor 1s steps(1) infinite;
@@ -221,11 +191,39 @@
     @keyframes blinkCursor { 50% { opacity: 0; } }
 
     .hero-subcopy {
-      max-width: 44ch;
-      margin-top: 1.25rem;
-      font-size: 0.95rem;
-      line-height: 1.95;
+      max-width: 34ch;
+      margin-top: 0.4rem;
+      font-size: 1.05rem;
+      line-height: 1.85;
       color: var(--mid);
+    }
+    .hero-actions {
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+    .hero-image-wrap {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+    }
+    .hero-image {
+      width: clamp(180px, 22vw, 250px);
+      height: clamp(180px, 22vw, 250px);
+      border-radius: 50%;
+      overflow: hidden;
+      border: 1px solid var(--rule);
+      background: rgba(253,246,238,0.55);
+      box-shadow: 0 18px 40px rgba(67,35,25,0.08);
+      flex-shrink: 0;
+    }
+    .hero-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
     }
 
     .hero-bottom { border-bottom: 1px solid var(--rule); }
@@ -234,7 +232,7 @@
       margin: 0 auto;
       padding: 0 var(--pad);
       display: grid;
-      grid-template-columns: 1.1fr 0.9fr 0.9fr;
+      grid-template-columns: 1.15fr 0.85fr 0.85fr;
     }
     .hero-col {
       padding: 2.75rem 0;
@@ -248,7 +246,6 @@
       padding-left: 2.5rem;
     }
     .hero-col:not(:last-child) { padding-right: 2.5rem; }
-
     .col-label {
       font-family: var(--mono);
       font-size: 0.58rem;
@@ -264,15 +261,14 @@
     }
     .col-value.big {
       font-family: var(--serif);
-      font-size: clamp(1.15rem, 1.9vw, 1.5rem);
+      font-size: clamp(1.4rem, 2.8vw, 2rem);
       font-weight: 300;
       font-style: italic;
-      line-height: 1.55;
-      letter-spacing: -0.01em;
+      line-height: 1.45;
+      letter-spacing: -0.02em;
       color: var(--ink);
     }
 
-    .hero-actions { display: flex; gap: 0.6rem; flex-wrap: wrap; margin-top: 1.8rem; }
     .btn {
       display: inline-flex;
       align-items: center;
@@ -297,7 +293,10 @@
       color: var(--mid);
       background: rgba(253,246,238,0.35);
     }
-    .btn-ghost:hover { border-color: var(--ink); color: var(--ink); }
+    .btn-ghost:hover {
+      border-color: var(--ink);
+      color: var(--ink);
+    }
 
     .s-hdr { border-bottom: 1px solid var(--rule); }
     .s-hdr-inner {
@@ -354,7 +353,6 @@
       line-height: 2;
       margin-bottom: 2.5rem;
     }
-
     .skill-row { margin-bottom: 1.25rem; }
     .skill-label {
       font-family: var(--mono);
@@ -364,7 +362,11 @@
       color: var(--faint);
       margin-bottom: 0.6rem;
     }
-    .chips { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
     .chip {
       font-size: 0.7rem;
       letter-spacing: 0.03em;
@@ -569,7 +571,11 @@
       content: "•";
       color: var(--ink);
     }
-    .pr-tags { display: flex; gap: 0.45rem; flex-wrap: wrap; }
+    .pr-tags {
+      display: flex;
+      gap: 0.45rem;
+      flex-wrap: wrap;
+    }
     .pr-tag {
       font-family: var(--mono);
       font-size: 0.54rem;
@@ -637,10 +643,18 @@
       display: block;
       margin-bottom: 0.12rem;
     }
-    .cl-value { font-size: 0.86rem; color: var(--ink); }
-    .cl-arrow { font-size: 0.8rem; color: var(--faint); }
+    .cl-value {
+      font-size: 0.86rem;
+      color: var(--ink);
+    }
+    .cl-arrow {
+      font-size: 0.8rem;
+      color: var(--faint);
+    }
 
-    .contact-right { padding: 4.5rem 0 4.5rem 3rem; }
+    .contact-right {
+      padding: 4.5rem 0 4.5rem 3rem;
+    }
     .st-label,
     .roles-label {
       font-family: var(--mono);
@@ -661,13 +675,14 @@
       border-bottom: 1px solid var(--rule);
     }
     .sdot {
-      width: 6px; height: 6px;
+      width: 6px;
+      height: 6px;
       border-radius: 50%;
       background: #c97a50;
       box-shadow: 0 0 8px rgba(201,122,80,0.5);
       animation: blink 2.5s ease-in-out infinite;
     }
-    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.3} }
+    @keyframes blink { 0%,100% { opacity: 1; } 50% { opacity: 0.3; } }
     .role-item {
       font-size: 0.82rem;
       color: var(--mid);
@@ -680,7 +695,10 @@
     }
     .role-item:first-of-type { border-top: 1px solid var(--rule); }
     .role-item:hover { color: var(--ink); }
-    .role-arr { font-size: 0.7rem; color: var(--faint); }
+    .role-arr {
+      font-size: 0.7rem;
+      color: var(--faint);
+    }
 
     footer { border-top: 1px solid var(--rule); }
     .footer-inner {
@@ -700,8 +718,14 @@
       letter-spacing: 0.1em;
       color: var(--faint);
     }
-    .footer-links { display: flex; gap: 1.5rem; }
-    .footer-links a { text-transform: uppercase; transition: color .2s; }
+    .footer-links {
+      display: flex;
+      gap: 1.5rem;
+    }
+    .footer-links a {
+      text-transform: uppercase;
+      transition: color .2s;
+    }
     .footer-links a:hover { color: var(--ink); }
 
     .reveal {
@@ -709,44 +733,103 @@
       transform: translateY(12px);
       transition: opacity .7s ease, transform .7s ease;
     }
-    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
 
     @media (max-width: 1080px) {
-      .hero-top-inner {
-        min-height: auto;
+      .hero-copy {
+        grid-template-columns: 1fr 220px;
       }
-      .pr-detail-grid { grid-template-columns: 1fr; }
+      .pr-detail-grid {
+        grid-template-columns: 1fr;
+      }
     }
+
     @media (max-width: 960px) {
-      .hero-cols { grid-template-columns: 1fr 1fr; }
-      .hero-col:last-child { display: none; }
+      .hero-copy {
+        grid-template-columns: 1fr;
+      }
+      .hero-text {
+        order: 2;
+      }
+      .hero-image-wrap {
+        order: 1;
+        justify-content: flex-start;
+      }
+      .hero-cols {
+        grid-template-columns: 1fr 1fr;
+      }
+      .hero-col:last-child {
+        display: none;
+      }
       .about-body-inner,
-      .contact-body-inner { grid-template-columns: 1fr; }
+      .contact-body-inner {
+        grid-template-columns: 1fr;
+      }
       .about-left,
       .contact-left {
         border-right: none;
         border-bottom: 1px solid var(--rule);
-        padding-right: 0; padding-bottom: 3rem;
+        padding-right: 0;
+        padding-bottom: 3rem;
       }
       .about-right,
-      .contact-right { padding-left: 0; }
-      .exp-item-inner { grid-template-columns: 1fr; gap: 1.25rem; }
-      .project-row-inner { grid-template-columns: 1fr; }
-      .pr-arrow { display: none; }
+      .contact-right {
+        padding-left: 0;
+      }
+      .exp-item-inner {
+        grid-template-columns: 1fr;
+        gap: 1.25rem;
+      }
+      .project-row-inner {
+        grid-template-columns: 1fr;
+      }
+      .pr-arrow {
+        display: none;
+      }
     }
+
     @media (max-width: 640px) {
-      .nav-links { display: none; }
-      .hero-top-inner { padding-top: 3rem; }
-      .hero-cols { grid-template-columns: 1fr; }
-      .hero-col + .hero-col { border-left: none; border-top: 1px solid var(--rule); padding-left: 0; }
-      .typed-name { font-size: clamp(4rem, 18vw, 6rem); white-space: normal; }
-      .project-list { padding-inline: 1rem; }
-      .project-row-inner { padding: 1.4rem; }
-      .pr-num { display: none; }
-      .pr-title { font-size: 1.55rem; }
+      .nav-links {
+        display: none;
+      }
+      .hero-top-inner {
+        padding-top: 3rem;
+      }
+      .hero-cols {
+        grid-template-columns: 1fr;
+      }
+      .hero-col + .hero-col {
+        border-left: none;
+        border-top: 1px solid var(--rule);
+        padding-left: 0;
+      }
+      .typed-name {
+        font-size: clamp(2.6rem, 15vw, 4rem);
+        white-space: normal;
+      }
+      .hero-subcopy {
+        font-size: 0.96rem;
+      }
+      .project-list {
+        padding-inline: 1rem;
+      }
+      .project-row-inner {
+        padding: 1.4rem;
+      }
+      .pr-num {
+        display: none;
+      }
+      .pr-title {
+        font-size: 1.55rem;
+      }
       .pr-desc,
       .pr-highlights li,
-      .pr-detail-value { font-size: 0.92rem; }
+      .pr-detail-value {
+        font-size: 0.92rem;
+      }
     }
   </style>
 </head>
@@ -770,21 +853,23 @@
     <div class="hero-top reveal visible">
       <div class="hero-top-inner">
         <div class="hero-copy">
-          <div class="hero-image">
-           
-            <img src="pictureofme.png" alt="Wiam Salih" />
-          </div>
-
           <div class="hero-text">
             <div class="hero-eyebrow">Data &amp; Analytics Engineer • AWS Certified</div>
             <div class="hero-intro">Hello, I’m</div>
             <div class="typed-name-wrap">
-              <h1 class="typed-name" id="typedName" aria-label="Wiam Salih"></h1>
+              <h1 class="typed-name" id="typedName" aria-label="Wiam Salih">Wiam Salih</h1>
             </div>
             <p class="hero-subcopy">I build clean pipelines, reliable systems, and decision-ready dashboards.</p>
             <div class="hero-actions">
-            <a class="btn btn-dark" href="#projects">View Projects</a>
-            <a class="btn btn-ghost" href="https://www.linkedin.com/in/wiam-salih-454069241/" target="_blank" rel="noopener">LinkedIn ↗</a>
+              <a class="btn btn-dark" href="#projects">View Projects</a>
+              <a class="btn btn-ghost" href="https://www.linkedin.com/in/wiam-salih-454069241/" target="_blank" rel="noopener">LinkedIn ↗</a>
+            </div>
+          </div>
+
+          <div class="hero-image-wrap">
+            <div class="hero-image">
+              <img src="pictureofme.png" alt="Wiam Salih" />
+            </div>
           </div>
         </div>
       </div>
@@ -795,7 +880,7 @@
         <div class="hero-col">
           <div>
             <div class="col-label">About</div>
-            <div class="col-value big">I’m currently a senior at George Mason University studying Information Technology with a concentration in Software Solutions. I’m a problem solver at heart, and analytical with my techniques which is why I’m fascinated by building thoughtful data products, reliable cloud workflows, and analytics experiences that make complex systems feel clear and useful. </div>
+            <div class="col-value big">I’m currently a senior at George Mason University studying Information Technology with a concentration in Software Solutions. I’m a problem solver at heart, and analytical with my techniques which is why I’m fascinated by building thoughtful data products, reliable cloud workflows, and analytics experiences that make complex systems feel clear and useful.</div>
           </div>
         </div>
         <div class="hero-col">
@@ -805,7 +890,7 @@
           </div>
           <div>
             <div class="col-label">Focus</div>
-            <div class="col-value">Data Engineering<br />Analytics & Cloud</div>
+            <div class="col-value">Data Engineering<br />Analytics &amp; Cloud</div>
           </div>
         </div>
         <div class="hero-col">
@@ -834,7 +919,7 @@
             <p class="about-statement">I build the systems that turn raw data into decisions, with equal attention to architecture, clarity, and the people using the output.</p>
           </div>
           <div class="about-right reveal">
-            <p class="about-para">My work sits between data engineering, analytics, and cloud. I build end-to-end workflows that are technically sound, visually clear, and are genuinely useful to the people depending on them.</p>
+            <p class="about-para">My work sits between data engineering, analytics, and cloud. I build end-to-end workflows that are technically sound, visually clear, and genuinely useful to the people depending on them.</p>
             <div class="skill-row">
               <div class="skill-label">Languages</div>
               <div class="chips">
@@ -1150,4 +1235,39 @@
   <script>
     const nav = document.getElementById('nav');
     window.addEventListener('scroll', () => {
-      nav.classList.
+      nav.classList.toggle('scrolled', window.scrollY > 20);
+    });
+
+    const revealEls = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    revealEls.forEach((el) => observer.observe(el));
+
+    const typedName = document.getElementById('typedName');
+    const text = 'Wiam Salih';
+    typedName.textContent = '';
+    let index = 0;
+
+    function typeEffect() {
+      if (index < text.length) {
+        typedName.innerHTML = text.slice(0, index + 1) + '<span class="cursor"></span>';
+        index += 1;
+        setTimeout(typeEffect, 90);
+      } else {
+        typedName.innerHTML = text + '<span class="cursor"></span>';
+      }
+    }
+
+    window.addEventListener('load', () => {
+      setTimeout(typeEffect, 350);
+    });
+  </script>
+</body>
+</html>
+
