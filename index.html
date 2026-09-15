@@ -791,6 +791,243 @@
       }
     }
 
+    /* ===== Accessibility toolkit ===== */
+    .skip-link {
+      position: absolute;
+      left: -999px;
+      top: auto;
+      z-index: 10000;
+      background: var(--ink);
+      color: var(--s0);
+      padding: 0.85rem 1.25rem;
+      border-radius: 0 0 10px 0;
+      font-size: 0.85rem;
+      letter-spacing: 0.02em;
+    }
+    .skip-link:focus {
+      left: 0;
+      top: 0;
+    }
+
+    :focus-visible {
+      outline: 3px solid #8e4a6e;
+      outline-offset: 2px;
+    }
+
+    #a11y-toggle {
+      position: fixed;
+      bottom: 1.5rem;
+      right: 1.5rem;
+      z-index: 9999;
+      width: 54px;
+      height: 54px;
+      border-radius: 50%;
+      background: var(--ink);
+      color: var(--s0);
+      border: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 10px 30px rgba(67,35,25,0.28);
+      transition: transform .18s, background .2s;
+    }
+    #a11y-toggle:hover { background: #2f1e18; transform: translateY(-2px); }
+    #a11y-toggle svg { width: 26px; height: 26px; }
+
+    #a11y-panel {
+      position: fixed;
+      bottom: 5.5rem;
+      right: 1.5rem;
+      z-index: 9999;
+      width: min(320px, calc(100vw - 2.5rem));
+      background: rgba(253,246,238,0.97);
+      backdrop-filter: blur(14px) saturate(1.3);
+      border: 1px solid var(--rule);
+      border-radius: 20px;
+      box-shadow: 0 20px 50px rgba(67,35,25,0.22);
+      padding: 1.25rem;
+      display: none;
+      flex-direction: column;
+      gap: 0.9rem;
+      max-height: min(70vh, 560px);
+      overflow-y: auto;
+    }
+    #a11y-panel.open { display: flex; }
+    #a11y-panel h2 {
+      font-family: var(--serif);
+      font-size: 1.3rem;
+      font-weight: 300;
+      font-style: italic;
+      color: var(--ink);
+    }
+    .a11y-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem;
+      border-top: 1px solid var(--rule);
+      padding-top: 0.9rem;
+    }
+    .a11y-row:first-of-type { border-top: none; padding-top: 0; }
+    .a11y-row-label {
+      font-size: 0.82rem;
+      color: var(--ink);
+    }
+    .a11y-row-desc {
+      font-size: 0.7rem;
+      color: var(--mid);
+      margin-top: 0.15rem;
+    }
+    .a11y-btn-group {
+      display: flex;
+      gap: 0.4rem;
+      flex-shrink: 0;
+    }
+    .a11y-mini-btn {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      border: 1px solid var(--rule);
+      background: rgba(255,255,255,0.4);
+      color: var(--ink);
+      font-size: 0.9rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: border-color .2s, background .2s;
+    }
+    .a11y-mini-btn:hover { border-color: var(--ink); background: rgba(255,255,255,0.7); }
+
+    .a11y-switch {
+      position: relative;
+      width: 42px;
+      height: 24px;
+      border-radius: 999px;
+      background: rgba(122,96,85,0.3);
+      border: none;
+      cursor: pointer;
+      flex-shrink: 0;
+      transition: background .2s;
+    }
+    .a11y-switch::before {
+      content: "";
+      position: absolute;
+      top: 3px;
+      left: 3px;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: var(--s0);
+      transition: transform .2s;
+    }
+    .a11y-switch[aria-pressed="true"] { background: var(--ink); }
+    .a11y-switch[aria-pressed="true"]::before { transform: translateX(18px); }
+
+    .a11y-reset {
+      margin-top: 0.25rem;
+      align-self: flex-start;
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--mid);
+      background: none;
+      border: 1px solid var(--rule);
+      border-radius: 999px;
+      padding: 0.5rem 0.9rem;
+      cursor: pointer;
+      transition: border-color .2s, color .2s;
+    }
+    .a11y-reset:hover { border-color: var(--ink); color: var(--ink); }
+
+    /* Underline links mode */
+    body.a11y-underline a { text-decoration: underline; text-underline-offset: 2px; }
+
+    /* Reduce motion mode */
+    body.a11y-reduce-motion,
+    body.a11y-reduce-motion * {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
+      scroll-behavior: auto !important;
+    }
+    body.a11y-reduce-motion .reveal { opacity: 1 !important; transform: none !important; }
+
+    /* Dyslexia-friendly mode */
+    body.a11y-dyslexia,
+    body.a11y-dyslexia .hero-subcopy,
+    body.a11y-dyslexia .about-para,
+    body.a11y-dyslexia .pr-desc,
+    body.a11y-dyslexia .exp-bullets li,
+    body.a11y-dyslexia .pr-highlights li,
+    body.a11y-dyslexia .col-value,
+    body.a11y-dyslexia .contact-sub {
+      font-family: Arial, Verdana, sans-serif !important;
+      letter-spacing: 0.02em;
+      line-height: 1.9 !important;
+      word-spacing: 0.08em;
+    }
+    body.a11y-dyslexia .typed-name,
+    body.a11y-dyslexia .s-title,
+    body.a11y-dyslexia .about-statement,
+    body.a11y-dyslexia .pr-title,
+    body.a11y-dyslexia .contact-h,
+    body.a11y-dyslexia .exp-company,
+    body.a11y-dyslexia .col-value.big {
+      font-family: Arial, Verdana, sans-serif !important;
+      font-style: normal !important;
+    }
+
+    /* High contrast mode */
+    body.a11y-contrast {
+      background: #000 !important;
+    }
+    body.a11y-contrast::after { display: none; }
+    body.a11y-contrast,
+    body.a11y-contrast .col-value,
+    body.a11y-contrast .col-value.big,
+    body.a11y-contrast .about-para,
+    body.a11y-contrast .hero-subcopy,
+    body.a11y-contrast .pr-desc,
+    body.a11y-contrast .pr-detail-value,
+    body.a11y-contrast .exp-bullets li,
+    body.a11y-contrast .pr-highlights li,
+    body.a11y-contrast .contact-sub,
+    body.a11y-contrast .exp-meta,
+    body.a11y-contrast .cl-value,
+    body.a11y-contrast .role-item {
+      color: #fff !important;
+    }
+    body.a11y-contrast .typed-name,
+    body.a11y-contrast .s-title,
+    body.a11y-contrast .about-statement,
+    body.a11y-contrast .pr-title,
+    body.a11y-contrast .contact-h,
+    body.a11y-contrast .exp-company,
+    body.a11y-contrast h1,
+    body.a11y-contrast h2,
+    body.a11y-contrast h3 {
+      color: #ffe27a !important;
+    }
+    body.a11y-contrast nav,
+    body.a11y-contrast #a11y-panel,
+    body.a11y-contrast .project-row,
+    body.a11y-contrast .pr-detail {
+      background: #000 !important;
+      border-color: #ffe27a !important;
+    }
+    body.a11y-contrast nav.scrolled { backdrop-filter: none !important; }
+    body.a11y-contrast a { color: #7fd4ff !important; }
+    body.a11y-contrast .btn-dark { background: #ffe27a !important; color: #000 !important; }
+    body.a11y-contrast .btn-ghost { border-color: #ffe27a !important; color: #ffe27a !important; }
+    body.a11y-contrast .chip,
+    body.a11y-contrast .pr-tag,
+    body.a11y-contrast .exp-badge,
+    body.a11y-contrast .pr-badge { border-color: #ffe27a !important; color: #fff !important; background: #000 !important; }
+    body.a11y-contrast .rule,
+    body.a11y-contrast * { border-color: #ffe27a !important; }
+
     @media (max-width: 640px) {
       .nav-links {
         display: none;
@@ -834,6 +1071,7 @@
   </style>
 </head>
 <body>
+  <a class="skip-link" href="#main">Skip to main content</a>
   <nav id="nav">
     <div class="nav-inner">
       <span class="nav-logo">Wiam Salih</span>
@@ -849,7 +1087,7 @@
     </div>
   </nav>
 
-  <main>
+  <main id="main">
     <div class="hero-top reveal visible">
       <div class="hero-top-inner">
         <div class="hero-copy">
@@ -1221,6 +1459,65 @@
     </div>
   </main>
 
+  <button id="a11y-toggle" aria-haspopup="true" aria-expanded="false" aria-controls="a11y-panel" aria-label="Open accessibility options">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <circle cx="12" cy="4" r="1.6" fill="currentColor" stroke="none"></circle>
+      <path d="M5 8.5 12 7l7 1.5"></path>
+      <path d="M12 7v6"></path>
+      <path d="M9 21l3-8 3 8"></path>
+      <path d="M6 12l6 1.5L18 12"></path>
+    </svg>
+  </button>
+
+  <div id="a11y-panel" role="dialog" aria-modal="false" aria-labelledby="a11y-heading">
+    <h2 id="a11y-heading">Accessibility</h2>
+
+    <div class="a11y-row">
+      <div>
+        <div class="a11y-row-label">Text size</div>
+        <div class="a11y-row-desc">Adjust reading size</div>
+      </div>
+      <div class="a11y-btn-group">
+        <button class="a11y-mini-btn" id="a11y-font-dec" aria-label="Decrease text size">A−</button>
+        <button class="a11y-mini-btn" id="a11y-font-inc" aria-label="Increase text size">A+</button>
+      </div>
+    </div>
+
+    <div class="a11y-row">
+      <div>
+        <div class="a11y-row-label">High contrast</div>
+        <div class="a11y-row-desc">Black background, bright text</div>
+      </div>
+      <button class="a11y-switch" id="a11y-contrast" role="switch" aria-checked="false" aria-pressed="false" aria-label="Toggle high contrast mode"></button>
+    </div>
+
+    <div class="a11y-row">
+      <div>
+        <div class="a11y-row-label">Dyslexia-friendly font</div>
+        <div class="a11y-row-desc">Simpler letterforms, more spacing</div>
+      </div>
+      <button class="a11y-switch" id="a11y-dyslexia" role="switch" aria-checked="false" aria-pressed="false" aria-label="Toggle dyslexia-friendly font"></button>
+    </div>
+
+    <div class="a11y-row">
+      <div>
+        <div class="a11y-row-label">Underline links</div>
+        <div class="a11y-row-desc">Make links easier to spot</div>
+      </div>
+      <button class="a11y-switch" id="a11y-underline" role="switch" aria-checked="false" aria-pressed="false" aria-label="Toggle underlined links"></button>
+    </div>
+
+    <div class="a11y-row">
+      <div>
+        <div class="a11y-row-label">Reduce motion</div>
+        <div class="a11y-row-desc">Turn off animations &amp; fade-ins</div>
+      </div>
+      <button class="a11y-switch" id="a11y-motion" role="switch" aria-checked="false" aria-pressed="false" aria-label="Toggle reduced motion"></button>
+    </div>
+
+    <button class="a11y-reset" id="a11y-reset">Reset to default</button>
+  </div>
+
   <footer>
     <div class="footer-inner">
       <div class="footer-copy">© 2026 Wiam Salih</div>
@@ -1267,7 +1564,105 @@
     window.addEventListener('load', () => {
       setTimeout(typeEffect, 350);
     });
+
+    // ===== Accessibility toolkit =====
+    (function () {
+      const STORAGE_KEY = 'a11y-prefs-v1';
+      const toggle = document.getElementById('a11y-toggle');
+      const panel = document.getElementById('a11y-panel');
+      const body = document.body;
+
+      const switches = {
+        contrast: document.getElementById('a11y-contrast'),
+        dyslexia: document.getElementById('a11y-dyslexia'),
+        underline: document.getElementById('a11y-underline'),
+        motion: document.getElementById('a11y-motion'),
+      };
+      const classMap = {
+        contrast: 'a11y-contrast',
+        dyslexia: 'a11y-dyslexia',
+        underline: 'a11y-underline',
+        motion: 'a11y-reduce-motion',
+      };
+
+      let prefs = { fontScale: 1, contrast: false, dyslexia: false, underline: false, motion: false };
+
+      function loadPrefs() {
+        try {
+          const raw = localStorage.getItem(STORAGE_KEY);
+          if (raw) prefs = Object.assign(prefs, JSON.parse(raw));
+        } catch (e) { /* ignore, use defaults */ }
+      }
+
+      function savePrefs() {
+        try { localStorage.setItem(STORAGE_KEY, JSON.stringify(prefs)); } catch (e) { /* storage unavailable */ }
+      }
+
+      function applyPrefs() {
+        document.documentElement.style.fontSize = (prefs.fontScale * 100) + '%';
+        Object.keys(classMap).forEach((key) => {
+          body.classList.toggle(classMap[key], !!prefs[key]);
+          if (switches[key]) {
+            switches[key].setAttribute('aria-checked', String(!!prefs[key]));
+            switches[key].setAttribute('aria-pressed', String(!!prefs[key]));
+          }
+        });
+      }
+
+      function openPanel() {
+        panel.classList.add('open');
+        toggle.setAttribute('aria-expanded', 'true');
+      }
+      function closePanel() {
+        panel.classList.remove('open');
+        toggle.setAttribute('aria-expanded', 'false');
+      }
+
+      toggle.addEventListener('click', () => {
+        if (panel.classList.contains('open')) { closePanel(); } else { openPanel(); }
+      });
+
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && panel.classList.contains('open')) {
+          closePanel();
+          toggle.focus();
+        }
+      });
+
+      document.addEventListener('click', (e) => {
+        if (panel.classList.contains('open') && !panel.contains(e.target) && e.target !== toggle) {
+          closePanel();
+        }
+      });
+
+      document.getElementById('a11y-font-inc').addEventListener('click', () => {
+        prefs.fontScale = Math.min(1.6, +(prefs.fontScale + 0.1).toFixed(2));
+        applyPrefs();
+        savePrefs();
+      });
+      document.getElementById('a11y-font-dec').addEventListener('click', () => {
+        prefs.fontScale = Math.max(0.8, +(prefs.fontScale - 0.1).toFixed(2));
+        applyPrefs();
+        savePrefs();
+      });
+
+      Object.keys(switches).forEach((key) => {
+        switches[key].addEventListener('click', () => {
+          prefs[key] = !prefs[key];
+          applyPrefs();
+          savePrefs();
+        });
+      });
+
+      document.getElementById('a11y-reset').addEventListener('click', () => {
+        prefs = { fontScale: 1, contrast: false, dyslexia: false, underline: false, motion: false };
+        applyPrefs();
+        savePrefs();
+      });
+
+      loadPrefs();
+      applyPrefs();
+    })();
   </script>
 </body>
 </html>
-
