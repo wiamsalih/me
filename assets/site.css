@@ -1316,7 +1316,7 @@ body.a11y-contrast * { border-color: #ffe27a !important; }
 .cs-meta {
   margin-top: 2.2rem;
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
   border: 1px solid var(--rule);
   border-radius: 20px;
   background: rgba(253,246,238,0.5);
