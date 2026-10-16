@@ -11,7 +11,7 @@
   --ink: #1a1310;
   /* Darkened for WCAG AA (4.5:1) on the lower, darker part of the gradient */
   --mid: #5a4239;
-  --faint: #634a41;
+  --faint: #56403a;
   --rule: rgba(180,130,110,0.22);
   --card: rgba(253,246,238,0.52);
 
@@ -33,11 +33,7 @@ body {
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
   background:
-    radial-gradient(ellipse 120% 60% at 80% 10%, rgba(248,190,130,0.55) 0%, transparent 60%),
-    radial-gradient(ellipse 80% 50% at 15% 30%, rgba(232,147,122,0.35) 0%, transparent 55%),
-    radial-gradient(ellipse 100% 70% at 50% 100%, rgba(142,74,110,0.16) 0%, transparent 60%),
-    radial-gradient(ellipse 140% 80% at 100% 80%, rgba(212,117,106,0.3) 0%, transparent 55%),
-    linear-gradient(180deg, #fdf6ee 0%, #fce8d5 30%, #f9d4b5 60%, #f4c9a8 80%, #eebb98 100%);
+    linear-gradient(180deg, #fdf6ee 0%, #fce8d5 30%, #f9d4b5 60%, #f5ccad 80%, #f2c4a4 100%);
   background-attachment: fixed;
   min-height: 100vh;
 }
@@ -181,7 +177,7 @@ a { color: inherit; text-decoration: none; }
 @keyframes blinkCursor { 50% { opacity: 0; } }
 
 .hero-subcopy {
-  max-width: 34ch;
+  max-width: 40ch;
   margin-top: 0.4rem;
   font-size: 1.05rem;
   line-height: 1.85;
@@ -1468,3 +1464,93 @@ body.a11y-contrast * { border-color: #ffe27a !important; }
   .cs-pager a { max-width: 100%; }
   .nav-right { gap: 1rem; }
 }
+
+/* ===== Living background: the warm glows drift slowly, like light on water ===== */
+html::before,
+body::before {
+  content: "";
+  position: fixed;
+  inset: -15%;
+  z-index: -1;
+  pointer-events: none;
+  will-change: transform;
+}
+html::before {
+  background:
+    radial-gradient(ellipse 70% 45% at 78% 12%, rgba(248,190,130,0.55) 0%, transparent 62%),
+    radial-gradient(ellipse 50% 40% at 18% 32%, rgba(232,147,122,0.35) 0%, transparent 58%);
+  animation: drift-a 28s ease-in-out infinite alternate;
+}
+body::before {
+  background:
+    radial-gradient(ellipse 65% 45% at 50% 95%, rgba(142,74,110,0.10) 0%, transparent 62%),
+    radial-gradient(ellipse 70% 50% at 92% 72%, rgba(212,117,106,0.16) 0%, transparent 58%);
+  animation: drift-b 36s ease-in-out infinite alternate;
+}
+@keyframes drift-a {
+  0%   { transform: translate3d(0, 0, 0) scale(1); }
+  50%  { transform: translate3d(-5%, 4%, 0) scale(1.08); }
+  100% { transform: translate3d(4%, -3%, 0) scale(1.02); }
+}
+@keyframes drift-b {
+  0%   { transform: translate3d(0, 0, 0) scale(1.04); }
+  50%  { transform: translate3d(5%, -4%, 0) scale(1); }
+  100% { transform: translate3d(-4%, 2%, 0) scale(1.07); }
+}
+
+/* ===== Hero wave lines: three thin strokes flowing at different speeds ===== */
+.hero-top-inner { padding-bottom: clamp(4.5rem, 10vh, 6.5rem); }
+.hero-waves {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 84px;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: -1;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
+          mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
+}
+.hw {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 200%;
+  height: 100%;
+  will-change: transform;
+}
+.hw path {
+  fill: none;
+  stroke-width: 1.25;
+  vector-effect: non-scaling-stroke;
+}
+.hw1 path { stroke: rgba(142,74,110,0.38); }
+.hw2 path { stroke: rgba(212,117,106,0.5); }
+.hw3 path { stroke: rgba(90,66,57,0.22); }
+.hw1 { animation: wave-flow 26s linear infinite; }
+.hw2 { animation: wave-flow 18s linear infinite reverse; }
+.hw3 { animation: wave-flow 40s linear infinite; }
+@keyframes wave-flow {
+  from { transform: translate3d(0, 0, 0); }
+  to   { transform: translate3d(-50%, 0, 0); }
+}
+
+/* Cover images ease in slightly on hover */
+.feat-cover { transition: transform .8s cubic-bezier(.2,.7,.2,1); }
+.feat-card:hover .feat-cover { transform: scale(1.035); }
+
+/* Motion off: panel switch or OS setting */
+body.a11y-reduce-motion::before,
+html:has(> body.a11y-reduce-motion)::before,
+body.a11y-reduce-motion .hw,
+body.a11y-reduce-motion .feat-cover { animation: none !important; transform: none !important; }
+@media (prefers-reduced-motion: reduce) {
+  html::before, body::before, .hw { animation: none !important; transform: none !important; }
+  .feat-card:hover .feat-cover { transform: none; }
+}
+
+/* High contrast: plain black, no decoration */
+body.a11y-contrast::before,
+html:has(> body.a11y-contrast)::before,
+body.a11y-contrast .hero-waves { display: none; }
