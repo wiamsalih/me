@@ -1143,13 +1143,16 @@ body.a11y-contrast * { border-color: #ffe27a !important; }
 .feat-card .placeholder.media {
   border-radius: 0;
   border-width: 0 0 1.5px 0;
-  min-height: 190px;
+  min-height: 0;
+  aspect-ratio: 16 / 9;
 }
 .feat-cover {
   display: block;
   width: 100%;
+  height: auto;
   aspect-ratio: 16 / 9;
   object-fit: cover;
+  object-position: top center;
   border-bottom: 1px solid var(--rule);
 }
 .feat-body {
