@@ -33,6 +33,8 @@ body {
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
   background:
+    radial-gradient(ellipse 120% 60% at 80% 10%, rgba(248,190,130,0.55) 0%, transparent 60%),
+    radial-gradient(ellipse 80% 50% at 15% 30%, rgba(232,147,122,0.35) 0%, transparent 55%),
     linear-gradient(180deg, #fdf6ee 0%, #fce8d5 30%, #f9d4b5 60%, #f5ccad 80%, #f2c4a4 100%);
   background-attachment: fixed;
   min-height: 100vh;
@@ -1465,37 +1467,43 @@ body.a11y-contrast * { border-color: #ffe27a !important; }
   .nav-right { gap: 1rem; }
 }
 
-/* ===== Living background: the warm glows drift slowly, like light on water ===== */
+/* ===== Wave background: two layers of soft colour bands roll across the page ===== */
 html::before,
 body::before {
   content: "";
   position: fixed;
-  inset: -15%;
+  top: -6vh;
+  left: 0;
+  width: 200vw;
+  height: 112vh;
   z-index: -1;
   pointer-events: none;
+  background-repeat: repeat-x;
+  background-size: 50% 100%;
   will-change: transform;
 }
 html::before {
-  background:
-    radial-gradient(ellipse 70% 45% at 78% 12%, rgba(248,190,130,0.55) 0%, transparent 62%),
-    radial-gradient(ellipse 50% 40% at 18% 32%, rgba(232,147,122,0.35) 0%, transparent 58%);
-  animation: drift-a 28s ease-in-out infinite alternate;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 900' preserveAspectRatio='none'%3E%3Cpath d='M0 230 Q360 150 720 230 T1440 230 L1440 900 L0 900 Z' fill='rgba%28253,246,238,0.55%29'/%3E%3Cpath d='M0 540 Q180 450 360 540 T720 540 T1080 540 T1440 540 L1440 900 L0 900 Z' fill='rgba%28244,180,138,0.38%29'/%3E%3C/svg%3E");
+  animation: sea-a 38s linear infinite;
 }
 body::before {
-  background:
-    radial-gradient(ellipse 65% 45% at 50% 95%, rgba(142,74,110,0.10) 0%, transparent 62%),
-    radial-gradient(ellipse 70% 50% at 92% 72%, rgba(212,117,106,0.16) 0%, transparent 58%);
-  animation: drift-b 36s ease-in-out infinite alternate;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 900' preserveAspectRatio='none'%3E%3Cpath d='M0 390 Q360 330 720 390 T1440 390 L1440 900 L0 900 Z' fill='rgba%28253,246,238,0.42%29'/%3E%3Cpath d='M0 690 Q120 630 240 690 T480 690 T720 690 T960 690 T1200 690 T1440 690 L1440 900 L0 900 Z' fill='rgba%28232,147,122,0.26%29'/%3E%3C/svg%3E");
+  animation: sea-b 26s linear infinite;
 }
-@keyframes drift-a {
-  0%   { transform: translate3d(0, 0, 0) scale(1); }
-  50%  { transform: translate3d(-5%, 4%, 0) scale(1.08); }
-  100% { transform: translate3d(4%, -3%, 0) scale(1.02); }
+/* Move one full tile sideways while bobbing up and down, so the loop is seamless */
+@keyframes sea-a {
+  0%   { transform: translate3d(0, 0, 0); }
+  25%  { transform: translate3d(-12.5%, 3vh, 0); }
+  50%  { transform: translate3d(-25%, 0, 0); }
+  75%  { transform: translate3d(-37.5%, -3vh, 0); }
+  100% { transform: translate3d(-50%, 0, 0); }
 }
-@keyframes drift-b {
-  0%   { transform: translate3d(0, 0, 0) scale(1.04); }
-  50%  { transform: translate3d(5%, -4%, 0) scale(1); }
-  100% { transform: translate3d(-4%, 2%, 0) scale(1.07); }
+@keyframes sea-b {
+  0%   { transform: translate3d(-50%, 0, 0); }
+  25%  { transform: translate3d(-37.5%, -4vh, 0); }
+  50%  { transform: translate3d(-25%, 0, 0); }
+  75%  { transform: translate3d(-12.5%, 4vh, 0); }
+  100% { transform: translate3d(0, 0, 0); }
 }
 
 /* ===== Hero wave lines: three thin strokes flowing at different speeds ===== */
@@ -1554,3 +1562,7 @@ body.a11y-reduce-motion .feat-cover { animation: none !important; transform: non
 body.a11y-contrast::before,
 html:has(> body.a11y-contrast)::before,
 body.a11y-contrast .hero-waves { display: none; }
+
+/* Links inside running text are underlined, not just coloured */
+.cs-content a,
+.cs-lede a { text-decoration: underline; text-underline-offset: 2px; }

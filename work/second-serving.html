@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Second Serving: Campus Food Waste Platform · Wiam Salih</title>
-  <meta name="description" content="A deployed web app that connects students with leftover event food, instrumented with 13 user events to power funnel, retention, and A/B test dashboards." />
+  <meta name="description" content="A deployed web app where event organizers post leftover food and students claim a portion before it’s thrown out, instrumented with 13 user events that feed funnel, retention, and A/B test dashboards." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;1,300;1,400&family=Figtree:wght@300;400;500;600&family=Martian+Mono:wght@300;400&display=swap" rel="stylesheet" />
@@ -34,11 +34,11 @@
         <a class="cs-back" href="../index.html#work"><span aria-hidden="true">←</span> All work</a>
         <p class="cs-eyebrow">Case study 04 · Product</p>
         <h1 class="cs-title">Second Serving<span class="cs-title-sub">Campus Food Waste Platform</span></h1>
-        <p class="cs-lede">A deployed web app that connects students with leftover event food, instrumented with 13 user events to power funnel, retention, and A/B test dashboards.</p>
-        <div class="cs-actions"><a class="btn btn-dark" href="https://second-serving-app.vercel.app" target="_blank" rel="noopener">Open live app <span aria-hidden="true">↗</span><span class="visually-hidden"> (opens in a new tab)</span></a></div>
+        <p class="cs-lede">A deployed web app where event organizers post leftover food and students claim a portion before it’s thrown out, instrumented with 13 user events that feed funnel, retention, and A/B test dashboards.</p>
+        <div class="cs-actions"><a class="btn btn-dark" href="https://second-serving-app.vercel.app" target="_blank" rel="noopener">Open live app <span aria-hidden="true">↗</span><span class="visually-hidden"> (opens in a new tab)</span></a><a class="btn btn-ghost" href="https://github.com/wiamsalih/second-serving-app" target="_blank" rel="noopener">Code and docs <span aria-hidden="true">↗</span><span class="visually-hidden"> (opens in a new tab)</span></a></div>
         <dl class="cs-meta">
-          <div><dt>Role</dt><dd><span class="placeholder">[ADD: your role, and solo or team]</span></dd></div>
-          <div><dt>Platform</dt><dd>Web app · Product analytics</dd></div>
+          <div><dt>Role</dt><dd>Product owner: PRD, design, build, analytics</dd></div>
+          <div><dt>Stack</dt><dd>HTML/CSS/JS · Supabase · dbt · Vercel</dd></div>
           <div><dt>Timeline</dt><dd><span class="placeholder">[ADD: dates or length]</span></dd></div>
           <div><dt>Live</dt><dd><a href="https://second-serving-app.vercel.app" target="_blank" rel="noopener">second-serving-app.vercel.app<span class="visually-hidden"> (opens in a new tab)</span></a></dd></div>
         </dl>
@@ -49,8 +49,8 @@
       <div class="cs-section-inner reveal">
         <div class="cs-label"><span class="s-num">01</span><h2 id="problem">Problem</h2></div>
         <div class="cs-content">
-            <p>Food left over from campus events often goes to waste, while students who would eat it don’t know it’s there.</p>
-            <span class="placeholder">[ADD: evidence for the problem, such as observations, data, or sources]</span>
+            <p>Campus events at Cornell Tech often end with extra food that gets thrown away, while students nearby would happily eat it. Organizers have no quick way to tell people food is available, and students have no reliable place to check.</p>
+            <span class="placeholder">[ADD: what you learned in interviews, with real quotes or numbers]</span>
         </div>
       </div>
     </section>
@@ -59,8 +59,10 @@
       <div class="cs-section-inner reveal">
         <div class="cs-label"><span class="s-num">02</span><h2 id="users">Users</h2></div>
         <div class="cs-content">
-            <p>Students looking for free food, and <span class="placeholder">[ADD: who posts the food, e.g. event organizers]</span>.</p>
-            <span class="placeholder">[ADD: persona or user description]</span>
+            <h3>Organizers</h3>
+            <p>Student clubs, program staff, and anyone hosting an event with food. They need to get rid of leftovers in under a minute, without extra work.</p>
+            <h3>Students</h3>
+            <p>Anyone on campus. They need to know what food is available, where, and for how long, before walking over.</p>
         </div>
       </div>
     </section>
@@ -69,8 +71,8 @@
       <div class="cs-section-inner reveal">
         <div class="cs-label"><span class="s-num">03</span><h2 id="role">My role</h2></div>
         <div class="cs-content">
-            <p>I took a campus food-waste initiative from concept to a deployed web app, and instrumented it for product analytics.</p>
-            <span class="placeholder">[ADD: which parts you designed and built, and teammates if any]</span>
+            <p>I own the product end to end: I wrote the PRD, OKRs and metric definitions, designed and built the site, and set up the event tracking, data warehouse, and dashboards.</p>
+            <span class="placeholder">[ADD: teammates, if any]</span>
         </div>
       </div>
     </section>
@@ -80,16 +82,22 @@
         <div class="cs-label"><span class="s-num">04</span><h2 id="process">Process</h2></div>
         <div class="cs-content">
             <h3>Research</h3>
-            <span class="placeholder">[ADD: any research before building]</span>
-            <h3>Flows</h3>
-            <figure class="cs-figure">
-            <!-- Replace the placeholder with: <img src="../images/second-serving/flow.png" alt="Describe what the screen shows and why it matters" /> -->
-            <div class="placeholder media">[ADD: user flow from seeing a post to picking up food]</div>
-            <figcaption><span class="placeholder">[ADD: caption for this image, and write its alt text in the img tag]</span></figcaption>
-          </figure>
-            <h3>Instrumentation</h3>
-            <p>I instrumented 13 user events to power funnel, retention, and A/B test dashboards.</p>
-            <span class="placeholder">[ADD: list of the 13 events, or an event map]</span>
+            <p>I wrote an interview guide for organizers and students and a usability test plan built around realistic tasks, such as posting 15 leftover sandwiches from an event.</p>
+            <span class="placeholder">[ADD: interview and usability findings once you have them]</span>
+            <h3>Competitive landscape</h3>
+            <ul>
+              <li><strong>Too Good To Go:</strong> a polished app with restaurant supply, but paid and for businesses, not campus events.</li>
+              <li><strong>Group chats and Slack:</strong> already where students are, but messages get buried and there are no portion counts or timing.</li>
+            </ul>
+            <h3>Requirements</h3>
+            <p>I prioritized the core loop first (P0): organizers post food with a location, portions, and a time window; students see active posts sorted by time left and claim a portion, with counts updating for everyone; and every key action is tracked. Dietary filters and the A/B test came next (P1), with notifications and organizer sign-in after that (P2).</p>
+            <h3>Instrumentation: 13 events</h3>
+            <ul>
+              <li><strong>Browsing:</strong> page_view, post_viewed, filter_changed, load_failed</li>
+              <li><strong>Claiming:</strong> claim_clicked, claim_completed, claim_failed, claim_abandoned, signup_completed</li>
+              <li><strong>Posting:</strong> post_form_opened, post_created, post_form_cancelled, post_failed</li>
+            </ul>
+            <p>Every event also records the user, session, experiment arm, and page. A daily pipeline models the raw events into a star schema with dbt and marts for the claim funnel, retention, and the weekly north star, with data tests such as making sure posts are never over-claimed.</p>
             <h3>Iterations</h3>
             <span class="placeholder">[ADD: how the design changed, and why]</span>
         </div>
@@ -100,9 +108,11 @@
       <div class="cs-section-inner reveal">
         <div class="cs-label"><span class="s-num">05</span><h2 id="decisions">Key design decisions</h2></div>
         <div class="cs-content">
-            <div class="cs-decision"><h3>Measure participation from day one</h3><p>The 13 instrumented events feed funnel, retention, and A/B test dashboards that show what drives participation.</p></div>
-            <div class="cs-decision"><h3>A/B testing</h3><p><span class="placeholder">[ADD: what you tested and why; include results only if the test actually ran]</span></p></div>
-            <div class="cs-decision"><h3><span class="placeholder">[ADD: another key design decision]</span></h3><span class="placeholder">[ADD: why]</span></div>
+            <div class="cs-decision"><h3>Website first, not a mobile app</h3><p>Faster to ship and test, and hosted free on Vercel. A native app and a Slack bot were the alternatives.</p></div>
+            <div class="cs-decision"><h3>A name, not an account</h3><p>Version 1 asks only for a name the first time you claim, the lowest-friction path to a first claim. Cornell sign-in was considered; it is the planned fix for spam posts.</p></div>
+            <div class="cs-decision"><h3>Sort by time left, show live portion counts</h3><p>Students see what’s about to disappear first, and counts update for everyone so nobody walks over for food that’s already gone.</p></div>
+            <div class="cs-decision"><h3>Meals saved per week as the north star</h3><p>It measures the actual goal, food that gets eaten, rather than traffic. Rescue rate, the claim funnel, and retention sit underneath it.</p></div>
+            <div class="cs-decision"><h3>A/B test on the claim button</h3><p>“Claim a portion” versus “Save me one,” split 50/50 and fixed per user. The hypothesis is that personal, low-commitment wording raises the view-to-click rate; the guardrail is that click-to-complete must not drop.</p><span class="placeholder">[ADD: result once the test finishes: rates, p-value, decision]</span></div>
         </div>
       </div>
     </section>
@@ -113,23 +123,21 @@
         <div class="cs-content wide">
             <div class="cs-figs">
               <figure class="cs-figure">
-            <!-- Replace the placeholder with: <img src="../images/second-serving/feed.png" alt="Describe what the screen shows and why it matters" /> -->
-            <div class="placeholder media">[ADD: main feed of available food]</div>
+            <img src="../images/second-serving/board.jpg" width="1600" height="900" loading="lazy" alt="Second Serving board with the headline Free lunch?, dietary filters for vegetarian, vegan, halal and gluten-free, a Post leftovers button, and the empty state Nothing on the rail right now." />
+            <figcaption>The board, shown in its empty state, with dietary filters and a prompt for organizers to post.</figcaption>
+          </figure>
+              <figure class="cs-figure">
+            <img src="../images/second-serving/name-prompt.jpg" width="1600" height="900" loading="lazy" alt="A dialog over the blurred board asking What should we call you?, explaining that organizers see this name when you claim food, with a name field and Cancel and Continue buttons." />
+            <figcaption>The only sign-up step: a name, asked the first time you act.</figcaption>
+          </figure>
+              <figure class="cs-figure">
+            <!-- Replace the placeholder with: <img src="../images/second-serving/board-live.png" alt="Describe what the screen shows and why it matters" /> -->
+            <div class="placeholder media">[ADD: board with live food posts and portion counts]</div>
             <figcaption><span class="placeholder">[ADD: caption for this image, and write its alt text in the img tag]</span></figcaption>
           </figure>
               <figure class="cs-figure">
-            <!-- Replace the placeholder with: <img src="../images/second-serving/post.png" alt="Describe what the screen shows and why it matters" /> -->
-            <div class="placeholder media">[ADD: posting leftover food]</div>
-            <figcaption><span class="placeholder">[ADD: caption for this image, and write its alt text in the img tag]</span></figcaption>
-          </figure>
-              <figure class="cs-figure">
-            <!-- Replace the placeholder with: <img src="../images/second-serving/funnel.png" alt="Describe what the screen shows and why it matters" /> -->
-            <div class="placeholder media">[ADD: funnel dashboard]</div>
-            <figcaption><span class="placeholder">[ADD: caption for this image, and write its alt text in the img tag]</span></figcaption>
-          </figure>
-              <figure class="cs-figure">
-            <!-- Replace the placeholder with: <img src="../images/second-serving/retention.png" alt="Describe what the screen shows and why it matters" /> -->
-            <div class="placeholder media">[ADD: retention or A/B test dashboard]</div>
+            <!-- Replace the placeholder with: <img src="../images/second-serving/dashboard.png" alt="Describe what the screen shows and why it matters" /> -->
+            <div class="placeholder media">[ADD: metrics dashboard with real data (not the sample-data version)]</div>
             <figcaption><span class="placeholder">[ADD: caption for this image, and write its alt text in the img tag]</span></figcaption>
           </figure>
             </div>
@@ -141,8 +149,9 @@
       <div class="cs-section-inner reveal">
         <div class="cs-label"><span class="s-num">07</span><h2 id="outcome">Outcome and what I learned</h2></div>
         <div class="cs-content">
-            <p>Second Serving is deployed at <a href="https://second-serving-app.vercel.app" target="_blank" rel="noopener">second-serving-app.vercel.app<span class="visually-hidden"> (opens in a new tab)</span></a>.</p>
-            <span class="placeholder">[ADD: real usage or dashboard results, only if you have them]</span>
+            <p>Second Serving is live at <a href="https://second-serving-app.vercel.app" target="_blank" rel="noopener">second-serving-app.vercel.app<span class="visually-hidden"> (opens in a new tab)</span></a>, with tracking and a daily data pipeline running.</p>
+            <p>Next steps already identified: Cornell sign-in to stop spam posts, a single database transaction so two people can’t claim the last portion at once, and email or Slack notifications so students don’t have to check the site.</p>
+            <span class="placeholder">[ADD: real usage numbers, only once you have them]</span>
             <span class="placeholder">[ADD: what you learned]</span>
         </div>
       </div>
